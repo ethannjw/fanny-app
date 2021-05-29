@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+
+import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
+import ButtonAppBar from './components/Header'
+import DataTable from './components/MuiDataTable'
+
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
+  container: {
+    // maxHeight: 440,
+    height: '100%'
+  },
+  dataTable: {
+    padding : 24
+  }
+});
 
 function App() {
+  const styles = useStyles()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.root}>
+      <ButtonAppBar />
+      <div className={styles.dataTable}>
+        <DataTable title={"Table"}/>
+      </div>
+      
     </div>
   );
 }
