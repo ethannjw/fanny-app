@@ -1,8 +1,8 @@
 
 import { makeStyles } from '@material-ui/core/styles';
 import './App.css';
-import ButtonAppBar from './components/Header'
-import DataTable from './components/MuiDataTable'
+import ButtonAppBar from '../../components/Header'
+import DataTable from '../../components/MuiDataTable'
 
 const useStyles = makeStyles({
   root: {

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link, useHistory} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,7 +13,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 
+// icons
 import MenuIcon from '@material-ui/icons/Menu';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ButtonAppBar() {
+    const history = useHistory()
   const classes = useStyles();
     const [state, setState] = useState(false)
 
@@ -48,6 +52,22 @@ export default function ButtonAppBar() {
     setState(open);
   };
 
+  const handleOnClick = (text) => {
+    switch(text) {
+        case 'Home':
+            history.push('/')
+            return
+        case 'Add New':
+            history.push('/add-new')
+            return
+        case "Modify":
+            history.push('/modify')
+            return
+        default:
+            return
+    }
+  }
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -58,8 +78,8 @@ export default function ButtonAppBar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Add New', "Modify"].map((text, index) => (
-          <ListItem button key={text}>
+        {['Home', 'Add New', "Modify"].map((text, index) => (
+          <ListItem button key={text} onClick={() => handleOnClick(text)}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -90,7 +110,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Fanny
+            {'Fanny'}
           </Typography>
           <Button color="inherit" className={classes.loginButton}>Login</Button>
         </Toolbar>

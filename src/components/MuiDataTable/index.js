@@ -2,7 +2,6 @@
 
 import MUIDataTable from "mui-datatables";
 
-
 const columns = [
     {
         name: "id",
@@ -50,14 +49,19 @@ const data = [
     { id: 8, platform: "google", loginId: "ethannjw@hotmail.com", password: "password" },
 ]
 
-const options = {
-  filterType: 'checkbox',
-  print: false,
-  download: true,
-};
+
 
 export default function MuiDataTable(props) {
-    const {title} = props
+
+    const {title, handleRowClick} = props
+    
+    const options = {
+        filterType: 'checkbox',
+        print: false,
+        download: true,
+        onRowClick: handleRowClick,
+      };
+
     return <MUIDataTable 
         title={title} 
         data={data} 
