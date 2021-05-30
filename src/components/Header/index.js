@@ -112,7 +112,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             {'Fanny'}
           </Typography>
-          <Button color="inherit" className={classes.loginButton}>Login</Button>
+          <Button color="inherit" className={classes.loginButton} onClick={() => history.push('/login')}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -1,8 +1,20 @@
 // https://github.com/gregnb/mui-datatables
-
+import {useState} from 'react'
 import MUIDataTable from "mui-datatables";
+import { useEffect } from "react";
+import {getClues} from "../../services"
+
 
 const columns = [
+    {
+        name: "category",
+        label: "Category",
+        options: {
+         filter: true,
+         sort: true,
+         display: true
+        }
+    },
     {
         name: "id",
         label: "id",
@@ -11,50 +23,55 @@ const columns = [
          sort: true,
          display: false
         }
-       },
-    {
-     name: "platform",
-     label: "Name",
-     options: {
-      filter: true,
-      sort: true,
-     }
     },
     {
-     name: "loginId",
-     label: "LoginId",
-     options: {
-      filter: true,
-      sort: false,
-     }
+        name: "platform",
+        label: "Platform",
+        options: {
+        filter: true,
+        sort: true,
+        }
     },
     {
-     name: "password",
-     label: "Password",
-     options: {
-      filter: true,
-      sort: false,
-     }
+        name: "loginId",
+        label: "Login Id",
+        options: {
+        filter: true,
+        sort: false,
+        }
+    },
+    {
+        name: "clue",
+        label: "Clue",
+        options: {
+        filter: true,
+        sort: false,
+        }
     },
    ];
-
-const data = [
-    { id: 1, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 2, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 3, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 4, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 5, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 6, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 7, platform: "github", loginId: "ethannjw@hotmail.com", password: "password" },
-    { id: 8, platform: "google", loginId: "ethannjw@hotmail.com", password: "password" },
-]
-
 
 
 export default function MuiDataTable(props) {
 
     const {title, handleRowClick} = props
-    
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const callGetClues = async () => {
+            getClues()
+            .then((res) => {
+                console.log(res)
+                if (res.statusText === "OK") {
+                    setData(res.data.results)
+                } 
+            })
+            .catch((res) => {
+                console.log(res)
+            })
+        }
+        callGetClues() 
+    }, [])
+
     const options = {
         filterType: 'checkbox',
         print: false,

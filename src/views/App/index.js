@@ -1,6 +1,6 @@
 
 import { makeStyles } from '@material-ui/core/styles';
-import './App.css';
+
 import ButtonAppBar from '../../components/Header'
 import DataTable from '../../components/MuiDataTable'
 
@@ -23,7 +23,7 @@ function App() {
     <div className={styles.root}>
       <ButtonAppBar />
       <div className={styles.dataTable}>
-        <DataTable title={"Table"}/>
+        <DataTable title={"All Clues"}/>
       </div>
       
     </div>
