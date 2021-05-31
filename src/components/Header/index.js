@@ -60,8 +60,8 @@ export default function ButtonAppBar() {
         case 'Add New':
             history.push('/add-new')
             return
-        case "Modify":
-            history.push('/modify')
+        case "All Clues":
+            history.push('/all-clues')
             return
         default:
             return
@@ -78,7 +78,7 @@ export default function ButtonAppBar() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Home', 'Add New', "Modify"].map((text, index) => (
+        {['Home', 'Add New', "All Clues"].map((text, index) => (
           <ListItem button key={text} onClick={() => handleOnClick(text)}>
             <ListItemText primary={text} />
           </ListItem>

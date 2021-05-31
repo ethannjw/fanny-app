@@ -1,6 +1,6 @@
 
 import { makeStyles } from '@material-ui/core/styles';
-
+import Typography from '@material-ui/core/Typography';
 import ButtonAppBar from '../../components/Header'
 import DataTable from '../../components/MuiDataTable'
 
@@ -23,7 +23,7 @@ function App() {
     <div className={styles.root}>
       <ButtonAppBar />
       <div className={styles.dataTable}>
-        <DataTable title={"All Clues"}/>
+        <Typography variant="h4">Welcome to Fanny</Typography>
       </div>
       
     </div>

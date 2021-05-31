@@ -1,9 +1,6 @@
 // https://github.com/gregnb/mui-datatables
-import {useState} from 'react'
-import MUIDataTable from "mui-datatables";
-import { useEffect } from "react";
-import {getClues} from "../../services"
 
+import MUIDataTable from "mui-datatables";
 
 const columns = [
     {
@@ -53,24 +50,7 @@ const columns = [
 
 export default function MuiDataTable(props) {
 
-    const {title, handleRowClick} = props
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const callGetClues = async () => {
-            getClues()
-            .then((res) => {
-                console.log(res)
-                if (res.statusText === "OK") {
-                    setData(res.data.results)
-                } 
-            })
-            .catch((res) => {
-                console.log(res)
-            })
-        }
-        callGetClues() 
-    }, [])
+    const {title, handleRowClick, data} = props
 
     const options = {
         filterType: 'checkbox',

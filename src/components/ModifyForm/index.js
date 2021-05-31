@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   });
 
 export default function ModifyForm(props) {
-  const {data, setRightDrawer} = props
+  const {data, setRightDrawer, getClues} = props
   const styles = useStyles()
 
   const handleDelete = () => {
@@ -46,6 +46,7 @@ export default function ModifyForm(props) {
       console.log(res)
       if(res.status === 204) {
         alert(data.loginId + " is deleted")
+        getClues()
         setRightDrawer(false)
       }
     })
@@ -64,6 +65,7 @@ export default function ModifyForm(props) {
     })
     .then((res) => {
       if(res.statusText === "OK") {
+        getClues()
         setRightDrawer(false)
       }
     })

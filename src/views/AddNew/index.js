@@ -54,7 +54,7 @@ function AddNew() {
     .then((res) => {
       console.log(res)
       if (res.statusText === "Created") {
-        history.push('/')
+        history.push('/all-clues')
       }
     })
     .catch((res) => {
